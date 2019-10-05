@@ -18,5 +18,5 @@ while True:
     wait_pin_change(p32)
     print(p32.value())
 
-# response = urequests.post("http://192.168.200.103/iot", data = "test mesage")
+# response = urequests.post("http://000.000.000.000/iot", data = "test mesage")
    # print(response.json())
