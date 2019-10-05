@@ -1,6 +1,9 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
-
+import ujson
 from io import BytesIO
+
+with open('config.py') as filepointer:
+     secrets = ujson.loads(filepointer.read())
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
@@ -22,5 +25,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(response.getvalue())
 
 
-httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
+httpd = HTTPServer((secrets['server_address'], 8000), SimpleHTTPRequestHandler)
 httpd.serve_forever()
